@@ -1,18 +1,29 @@
-body {
-    font-family: 'Arial', sans-serif;
+
+body, html {
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .container {
+    position: relative;
+    z-index: 1;
     width: 80%;
     margin: 0 auto;
 }
 
+
 header {
-    background-color: #333;
     color: white;
     text-align: center;
     padding: 1rem 0;
@@ -30,7 +41,6 @@ header {
 }
 
 footer {
-    background-color: #333;
     color: white;
     text-align: center;
     padding: 1rem 0;
@@ -59,16 +69,30 @@ footer {
 }
 
 .link-item {
+    position: relative;
     display: inline-block;
     margin: 10px;
     padding: 10px 15px;
-    background-color: #333;
+    background-color: #555;
     color: white;
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
+    z-index: 1;
 }
 
-.link-item:hover {
-    background-color: #555;
+.link-item::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    z-index: -1;
+    background: linear-gradient(45deg, rgba(255,255,255,0), rgba(255,255,255,0.5));
+    border-radius: 10px;
+}
+
+.link-item:hover::after {
+    background: linear-gradient(45deg, rgba(255,255,255,0.5), rgba(255,255,255,0));
 }
